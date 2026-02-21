@@ -1,48 +1,66 @@
-📝 Task: Personal Task Manager API (Express.js + Auth)
-أهلاً بك في التحدي التقني! المطلوب منك بناء Back-end API لنظام إدارة مهام، الهدف من هاد التاسك هو تقييم مهاراتك في بناء الـ RESTful APIs، التعامل مع قواعد البيانات، وتأمين النظام.
+# 📝 Task: Personal Task Manager API (Express.js + Auth)
 
-🚀 المطلوب (The Mission)
-بدنا نبني سيرفر بسيط بخلي المستخدمين يسجلوا دخول، وكل واحد يقدر يدير "قائمة المهام" الخاصة فيه فقط.
+أهلاً بك في التحدي التقني! المطلوب بناء Back-end API لإدارة مهام شخصية. الهدف تقييم مهاراتك في بناء RESTful APIs، إدارة البيانات، وتأمين الواجهات.
 
-1. نظام المستخدمين والـ Auth:
-Sign up: المستخدم بيسجل بـ (اسم، إيميل، باسورد).
+---
 
-Login: بعد ما يسجل، السيرفر برجعله JWT Token.
+## 🚀 المطلوب (The Mission)
+Build a simple server where users can register/login and manage their personal task lists.
 
-Security: الباسورد لازم يكون مشفر (Hashed) في قاعدة البيانات (استخدم bcrypt).
+- كل مستخدم يستطيع إنشاء، قراءة، تعديل، وحذف المهام الخاصة به فقط.
 
-2. إدارة المهام (Tasks):
-كل "مهمة" لازم تحتوي على: (العنوان، الوصف، حالة الإنجاز، وتاريخ الإضافة).
+### 1) نظام المستخدمين والـ Auth
+- Sign up: تسجيل باسم، إيميل، وكلمة مرور.
+- Login: عند النجاح يرجع JWT token.
+- Security: كلمات المرور يجب أن تكون مشفرة (bcrypt).
 
-Create Task: إضافة مهمة جديدة (لازم تكون مرتبطة بالمستخدم اللي عمل Login).
+### 2) إدارة المهام (Tasks)
+- كل "مهمة" تتضمن: العنوان، الوصف، حالة الإنجاز، وتاريخ الإضافة.
+- Create Task: إضافة مهمة مرتبطة بالمستخدم.
+- Get My Tasks: جلب مهام المستخدم الحالي فقط.
+- Update/Delete: تعديل أو حذف مهمة — فقط صاحب المهمة يمكنه ذلك.
 
-Get My Tasks: جلب قائمة المهام الخاصة بالمستخدم الحالي فقط.
+### 3) المتطلبات التقنية
+- Environment: Express.js (Node.js)
+- Database: MongoDB (Mongoose) أو MySQL (Sequelize/TypeORM)
+- Validation: تأكد من صحة المدخلات (مثال: email format، title required).
 
-Update/Delete: تعديل أو حذف المهمة (تأكد إن المستخدم ما بقدر يحذف مهمة غيره!).
+---
 
-3. المتطلبات التقنية:
-Environment: استخدم Express.js.
+## 🛠️ كيف رح نقيم الشغل؟ (Evaluation Criteria)
+- Clean Code: تنظيم الملفات ووضوح المسؤوليات (controllers, models, routes).
+- Error Handling: تعامل واضح مع الأخطاء (مثل: duplicate email، invalid IDs).
+- Middlewares: استخدام مصادقة ومسارات محمية (JWT middleware).
+- GitHub: وجود `.gitignore` وcommits منظمة (لا ترفع `node_modules` أو `.env`).
 
-Database: إما MongoDB (عن طريق Mongoose) أو MySQL (عن طريق Sequelize/TypeORM).
+---
 
-Validation: تأكد إن البيانات المدخلة صحيحة (مثلاً الإيميل بصيغة صح، والعنوان مش فاضي).
+## ✅ طريقة التسليم (Delivery)
+1. ادفع الكود على repository خاص في GitHub.
+2. عدّل هذا الملف `README.md` ليشرح كيفية تشغيل المشروع محلياً.
+3. أرسل رابط المستودع.
 
-🛠️ كيف رح نقيم الشغل؟ (Evaluation Criteria)
-ما بهمنا بس الكود يشتغل، بهمنا كمان:
+---
 
-Clean Code: تقسيم الملفات (Folders Structure) وتسمية المتغيرات.
+## مثال سريع لتشغيل محلي
+1. تثبيت الاعتمادات:
 
-Error Handling: كيف بتتعامل مع الأخطاء (مثلاً لو الإيميل مكرر شو بصير؟).
+```bash
+npm install
+```
 
-Middlewares: استخدام الـ Middleware لحماية المسارات (Protected Routes).
+2. إعداد ملف `.env` (مثال):
 
-GitHub: ترتيب الـ Commits ووجود ملف .gitignore (مهم جداً ما ترفع node_modules أو ملفات الـ .env).
+```
+PORT=3000
+MONGO_URI=mongodb://localhost:27017/task-manager
+JWT_SECRET=your_jwt_secret
+```
 
-📝 طريقة التسليم:
-ارفع الكود على مستودع (Repository) خاص فيك على GitHub.
+3. تشغيل الخادم:
 
-عدّل ملف الـ README.md واشرح فيه كيف ممكن نشغل المشروع عندنا (بخطوات بسيطة).
+```bash
+npm run dev
+```
 
-ابعتلي رابط الـ Repository لما تخلص.
-
-بالتوفيق! إحنا مهتمين نشوف كيف بتفكر وبتحل المشاكل أكثر من سرعة الحل.
+---
